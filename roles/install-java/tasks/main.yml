@@ -1,0 +1,4 @@
+---
+# tasks file for roles/install-java
+- import_tasks: install-default-jre.yml
+- import_tasks: install-default-jdk.yml
