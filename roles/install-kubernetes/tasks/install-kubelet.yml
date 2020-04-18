@@ -1,0 +1,6 @@
+---
+- name: install kubelet
+  apt:
+    name: kubelet=1.14.0-00
+    state: present
+    update_cache: true

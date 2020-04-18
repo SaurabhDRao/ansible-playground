@@ -1,0 +1,7 @@
+---
+# tasks file for roles/kubernetes
+- import_tasks: add-k8s-apt-key.yml
+- import_tasks: add-k8s-apt-repo.yml
+- import_tasks: install-kubelet.yml
+- import_tasks: install-kubeadm.yml
+- import_tasks: install-kubectl.yml

@@ -1,0 +1,7 @@
+---
+# tasks file for roles/docker
+- name: install docker
+  apt:
+    name: docker.io
+    state: present
+    update_cache: true
