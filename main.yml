@@ -1,6 +1,10 @@
 ---
 - hosts: all
-- roles:
-  - install-java
-  - install-docker
-  - install-kubernetes
+  become: yes
+  # become_user: root
+  # become_method: su
+  roles:
+  # - install-java
+  # - install-docker
+  # - install-kubernetes
+  - install-nodejs

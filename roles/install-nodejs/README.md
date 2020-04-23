@@ -1,7 +1,7 @@
-Install Docker
+Install NodeJS
 =========
 
-This role installs the latest docker on Debian family.
+This role installs the latest nodejs and npm on Debian or RedHat families.
 
 Role Variables
 --------------
@@ -13,4 +13,4 @@ Example Playbook
 
     - hosts: servers
       roles:
-         - install-docker
+         - install-nodejs
