@@ -1,22 +1,13 @@
 ---
 # tasks file for installing mongodb on debian
 
-- name: add mongodb gpg key
-  apt_key:
-    keyserver: keyserver.ubuntu.com
-    id: 9DA31620334BD75D9DCB49F368818C72E52529D4
+- name: update apt cache
+  shell: "apt update"
 
-- name: add mongodb repository
-  apt_repository:
-    repo: deb [ arch=amd64,arm64 ] https://repo.mongodb.org/apt/ubuntu xenial/mongodb-org/4.0 multiverse
-    state: present
-    filename: mongodb-org-4.0.list
-
-- name: update the repo cache and install mongodb package
+- name: install mongodb package
   apt:
-    name: mongodb-org
+    name: mongodb
     state: present
-    update_cache: true
 
 - name: Remove mongod default file
   file:
@@ -27,6 +18,13 @@
   template:
     src: mongod-debian.j2
     dest: /etc/mongod.conf
-  notify: 
-  - start
+
+- name: create data/db directory
+  file: 
+    path: /data/db
+    state: directory
+    owner: "{{ ansible_user }}"
+
+- name: run the mongodb in background
+  shell: "mongod --fork --syslog"
   
